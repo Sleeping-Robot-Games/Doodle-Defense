@@ -20,7 +20,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "airHit"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -28,15 +28,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 9 ]
+"values": [ 8, 24, 9, 25 ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "airMove"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -45,15 +45,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 5, 6 ]
+"values": [ 5, 21, 6, 22 ]
 }
 
 [sub_resource type="Animation" id=4]
 resource_name = "groundHit"
-length = 0.2
+length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -61,15 +61,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 4 ]
+"values": [ 3, 19, 4, 20 ]
 }
 
 [sub_resource type="Animation" id=5]
 resource_name = "groundMove"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -78,10 +78,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1 ]
+"values": [ 0, 16, 1, 17 ]
 }
 
 [node name="Enemy" type="Node2D" groups=["enemies"]]
