@@ -14,30 +14,24 @@ position = Vector2( 180, 320 )
 texture = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
-margin_left = -180.0
-margin_top = -182.0
-margin_right = 117.0
-margin_bottom = 106.0
+margin_left = -179.0
+margin_top = -102.0
+margin_right = 118.0
+margin_bottom = 186.0
 color = Color( 0, 0, 0, 0.113725 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="IncomingBlockColor" type="ColorRect" parent="."]
-margin_left = 152.0
-margin_top = 21.0
-margin_right = 296.0
-margin_bottom = 57.0
+margin_left = 153.0
+margin_top = 101.0
+margin_right = 297.0
+margin_bottom = 137.0
 color = Color( 0.321569, 0.0509804, 0.541176, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="BlockProgress" type="TextureProgress" parent="."]
-margin_left = 208.0
-margin_top = 21.0
-margin_right = 272.0
-margin_bottom = 85.0
+margin_left = 209.0
+margin_top = 101.0
+margin_right = 273.0
+margin_bottom = 165.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 3 )
@@ -50,20 +44,20 @@ tint_progress = Color( 0.921569, 0.921569, 0.921569, 1 )
 [node name="Tween2" type="Tween" parent="BlockProgress"]
 
 [node name="BlockSpawn4" type="Position2D" parent="."]
-position = Vector2( 170, 157 )
+position = Vector2( 171, 237 )
 
 [node name="BlockSpawn5" type="Position2D" parent="."]
-position = Vector2( 206, 157 )
+position = Vector2( 207, 237 )
 
 [node name="BlockSpawn6" type="Position2D" parent="."]
-position = Vector2( 242, 157 )
+position = Vector2( 243, 237 )
 
 [node name="BlockSpawn7" type="Position2D" parent="."]
-position = Vector2( 278, 157 )
+position = Vector2( 279, 237 )
 
 [node name="Selector" type="Sprite" parent="."]
 modulate = Color( 0, 0.235294, 0.737255, 1 )
-position = Vector2( 170, 157 )
+position = Vector2( 171, 237 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
@@ -72,28 +66,28 @@ texture = ExtResource( 2 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Column4" type="TextureButton" parent="."]
-margin_left = 152.0
-margin_top = 139.0
-margin_right = 188.0
-margin_bottom = 427.0
+margin_left = 153.0
+margin_top = 219.0
+margin_right = 189.0
+margin_bottom = 507.0
 
 [node name="Column5" type="TextureButton" parent="."]
-margin_left = 188.0
-margin_top = 139.0
-margin_right = 224.0
-margin_bottom = 427.0
+margin_left = 189.0
+margin_top = 219.0
+margin_right = 225.0
+margin_bottom = 507.0
 
 [node name="Column6" type="TextureButton" parent="."]
-margin_left = 224.0
-margin_top = 139.0
-margin_right = 260.0
-margin_bottom = 427.0
+margin_left = 225.0
+margin_top = 219.0
+margin_right = 261.0
+margin_bottom = 507.0
 
 [node name="Column7" type="TextureButton" parent="."]
-margin_left = 260.0
-margin_top = 139.0
-margin_right = 296.0
-margin_bottom = 427.0
+margin_left = 261.0
+margin_top = 219.0
+margin_right = 297.0
+margin_bottom = 507.0
 
 [node name="BlockLandTimer" type="Timer" parent="."]
 one_shot = true
@@ -103,13 +97,13 @@ wait_time = 0.5
 one_shot = true
 
 [node name="EnemySpawn5" type="Position2D" parent="."]
-position = Vector2( 26, 335 )
+position = Vector2( 27, 415 )
 
 [node name="EnemySpawn6" type="Position2D" parent="."]
-position = Vector2( 26, 371 )
+position = Vector2( 27, 451 )
 
 [node name="EnemySpawn7" type="Position2D" parent="."]
-position = Vector2( 26, 407 )
+position = Vector2( 27, 487 )
 
 [node name="EnemyAttackTimer" type="Timer" parent="."]
 one_shot = true
@@ -121,41 +115,38 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Line1" type="ColorRect" parent="HUD/VerticalDividers"]
-margin_left = 152.0
-margin_top = 139.0
-margin_right = 153.0
-margin_bottom = 426.0
+margin_left = 153.0
+margin_top = 219.0
+margin_right = 154.0
+margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Line2" type="ColorRect" parent="HUD/VerticalDividers"]
-margin_left = 188.0
-margin_top = 139.0
-margin_right = 189.0
-margin_bottom = 426.0
+margin_left = 189.0
+margin_top = 219.0
+margin_right = 190.0
+margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Line3" type="ColorRect" parent="HUD/VerticalDividers"]
-margin_left = 224.0
-margin_top = 139.0
-margin_right = 225.0
-margin_bottom = 426.0
+margin_left = 225.0
+margin_top = 219.0
+margin_right = 226.0
+margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Line4" type="ColorRect" parent="HUD/VerticalDividers"]
-margin_left = 260.0
-margin_top = 139.0
-margin_right = 261.0
-margin_bottom = 426.0
+margin_left = 261.0
+margin_top = 219.0
+margin_right = 262.0
+margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Line5" type="ColorRect" parent="HUD/VerticalDividers"]
-margin_left = 296.0
-margin_top = 139.0
-margin_right = 297.0
-margin_bottom = 426.0
+margin_left = 297.0
+margin_top = 219.0
+margin_right = 298.0
+margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="HorizontalDividers" type="Control" parent="HUD"]
@@ -163,52 +154,36 @@ margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="Line1" type="ColorRect" parent="HUD/HorizontalDividers"]
-margin_left = -1.0
-margin_top = 425.0
-margin_right = 296.0
-margin_bottom = 426.0
+margin_top = 505.0
+margin_right = 297.0
+margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Line2" type="ColorRect" parent="HUD/HorizontalDividers"]
-margin_left = -1.0
-margin_top = 389.0
-margin_right = 296.0
-margin_bottom = 390.0
+margin_top = 469.0
+margin_right = 297.0
+margin_bottom = 470.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Line3" type="ColorRect" parent="HUD/HorizontalDividers"]
-margin_left = -1.0
-margin_top = 353.0
-margin_right = 296.0
-margin_bottom = 354.0
+margin_top = 433.0
+margin_right = 297.0
+margin_bottom = 434.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="Line4" type="ColorRect" parent="HUD/HorizontalDividers"]
-margin_left = -1.0
-margin_top = 317.0
-margin_right = 296.0
-margin_bottom = 318.0
+margin_top = 397.0
+margin_right = 297.0
+margin_bottom = 398.0
 color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HP" type="Label" parent="HUD"]
-margin_left = 322.0
-margin_top = 357.0
-margin_right = 362.0
-margin_bottom = 371.0
+margin_left = 315.0
+margin_top = 433.0
+margin_right = 355.0
+margin_bottom = 447.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "HP: 5"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="FloatTextSpawner" parent="HUD/HP" instance=ExtResource( 4 )]
 
