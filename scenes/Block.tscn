@@ -5,14 +5,6 @@
 [ext_resource path="res://assets/block_003.png" type="Texture" id=3]
 [ext_resource path="res://assets/block_shatter.png" type="Texture" id=4]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [sub_resource type="Animation" id=2]
 length = 0.001
 tracks/0/type = "value"
@@ -44,23 +36,31 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4 ]
 }
 
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Block" type="Node2D" groups=["blocks"]]
 script = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 4 )
+hframes = 4
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2"]
+anims/RESET = SubResource( 2 )
+anims/shatter = SubResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 frame = 1
 playing = true
-
-[node name="Sprite" type="Sprite" parent="Sprite"]
-texture = ExtResource( 4 )
-hframes = 4
-vframes = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite/Sprite"]
-root_node = NodePath("../..")
-anims/RESET = SubResource( 2 )
-anims/shatter = SubResource( 3 )
 
 [node name="Tween" type="Tween" parent="."]
 
