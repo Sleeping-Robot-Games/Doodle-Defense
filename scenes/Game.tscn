@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/selector.png" type="Texture" id=2]
@@ -14,6 +14,13 @@
 [ext_resource path="res://assets/flower_003.png" type="Texture" id=12]
 [ext_resource path="res://assets/heart_002.png" type="Texture" id=13]
 [ext_resource path="res://assets/heart_003.png" type="Texture" id=14]
+[ext_resource path="res://assets/tower_001.png" type="Texture" id=15]
+[ext_resource path="res://assets/Cat_002.png" type="Texture" id=16]
+[ext_resource path="res://assets/cloud_001.png" type="Texture" id=17]
+[ext_resource path="res://assets/Cat_001.png" type="Texture" id=18]
+[ext_resource path="res://assets/selector2.png" type="Texture" id=19]
+[ext_resource path="res://assets/cloud_002.png" type="Texture" id=20]
+[ext_resource path="res://assets/tower_002.png" type="Texture" id=21]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -41,7 +48,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -63,6 +70,38 @@ animations = [ {
 "speed": 5.0
 } ]
 
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -76,47 +115,66 @@ margin_top = -102.0
 margin_right = 118.0
 margin_bottom = 186.0
 color = Color( 0, 0, 0, 0.113725 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Doodles" type="AnimatedSprite" parent="Background"]
 position = Vector2( -144, 205 )
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Background/Doodles"]
+[node name="Flower2" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 45, -1 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
-[node name="AnimatedSprite5" type="AnimatedSprite" parent="Background/Doodles"]
+[node name="Flower6" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 238, 0 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 flip_h = true
 
-[node name="AnimatedSprite2" type="AnimatedSprite" parent="Background/Doodles"]
+[node name="Flower3" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 91, -1 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 
-[node name="AnimatedSprite3" type="AnimatedSprite" parent="Background/Doodles"]
+[node name="Flower4" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 139, -1 )
 frames = SubResource( 4 )
 frame = 1
 playing = true
 flip_h = true
 
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="Background/Doodles"]
+[node name="Flower5" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 189, -2 )
 frames = SubResource( 5 )
+frame = 1
 playing = true
 
 [node name="Heart" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 294, -13 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
+frame = 2
+playing = true
+
+[node name="Clouds" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 144, -347 )
+frames = SubResource( 9 )
+playing = true
+
+[node name="Cat" type="AnimatedSprite" parent="Background"]
+position = Vector2( 146, -30 )
+frames = SubResource( 7 )
+frame = 1
+playing = true
+
+[node name="Tower" type="AnimatedSprite" parent="Background"]
+position = Vector2( 148, 93 )
+frames = SubResource( 8 )
 playing = true
 
 [node name="IncomingBlockColor" type="ColorRect" parent="."]
@@ -125,6 +183,9 @@ margin_top = 101.0
 margin_right = 297.0
 margin_bottom = 137.0
 color = Color( 0.321569, 0.0509804, 0.541176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BlockProgress" type="TextureProgress" parent="."]
 margin_left = 209.0
@@ -154,11 +215,13 @@ position = Vector2( 243, 237 )
 [node name="BlockSpawn7" type="Position2D" parent="."]
 position = Vector2( 279, 237 )
 
-[node name="Selector" type="Sprite" parent="."]
+[node name="Selector" type="AnimatedSprite" parent="."]
 modulate = Color( 0, 0.235294, 0.737255, 1 )
 position = Vector2( 171, 237 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+frames = SubResource( 10 )
+frame = 1
+playing = true
 
 [node name="Blocks" type="Node2D" parent="."]
 
@@ -261,6 +324,9 @@ margin_top = 505.0
 margin_right = 297.0
 margin_bottom = 506.0
 color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Line2" type="ColorRect" parent="HUD/HorizontalDividers"]
 margin_top = 469.0
