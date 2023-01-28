@@ -49,6 +49,7 @@ func next_color():
 	random.randomize()
 	spawn_color = random.randi_range(0, colors.size() - 1)
 	$IncomingBlock.set_color(colors[spawn_color])
+	$Selector.modulate = colors[spawn_color]
 	$BlockProgress/Tween1.interpolate_property($BlockProgress, 'value', 0, 50, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$BlockProgress/Tween1.start()
 	# enemy_phase()
