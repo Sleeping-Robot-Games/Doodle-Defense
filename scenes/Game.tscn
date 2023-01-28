@@ -120,6 +120,7 @@ position = Vector2( 180, 320 )
 texture = ExtResource( 5 )
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
+visible = false
 margin_left = -179.0
 margin_top = -102.0
 margin_right = 118.0
@@ -132,65 +133,65 @@ __meta__ = {
 [node name="Doodles" type="AnimatedSprite" parent="Background"]
 position = Vector2( -144, 205 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Flower2" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 45, -1 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="Flower6" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 238, 0 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Flower3" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 91, -1 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Flower4" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 139, -1 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 flip_h = true
 
 [node name="Flower5" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 189, -2 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Heart" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 294, -13 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Clouds" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 144, -347 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="Sun" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 25, -383 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="Cat" type="AnimatedSprite" parent="Background"]
 position = Vector2( 146, -30 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 
 [node name="Tower" type="AnimatedSprite" parent="Background"]
 position = Vector2( 148, 93 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="IncomingBlockColor" type="ColorRect" parent="."]
@@ -236,7 +237,6 @@ modulate = Color( 0, 0.235294, 0.737255, 1 )
 position = Vector2( 171, 237 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="Blocks" type="Node2D" parent="."]
@@ -361,13 +361,15 @@ margin_right = 297.0
 margin_bottom = 398.0
 color = Color( 0, 0, 0, 1 )
 
-[node name="HP" type="Label" parent="HUD"]
+[node name="HP" type="RichTextLabel" parent="HUD"]
 margin_left = 312.0
 margin_top = 511.0
-margin_right = 352.0
+margin_right = 357.0
 margin_bottom = 525.0
-custom_colors/font_color = Color( 1, 1, 1, 1 )
+bbcode_enabled = true
+bbcode_text = "[shake rate=10 level=2]HP: 5[/shake]"
 text = "HP: 5"
+scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
