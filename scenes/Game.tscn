@@ -1,10 +1,67 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/selector.png" type="Texture" id=2]
 [ext_resource path="res://assets/ring.png" type="Texture" id=3]
 [ext_resource path="res://scenes/FloatTextSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/background.png" type="Texture" id=5]
+[ext_resource path="res://assets/flower_001.png" type="Texture" id=6]
+[ext_resource path="res://assets/flower_006.png" type="Texture" id=7]
+[ext_resource path="res://assets/flower_002.png" type="Texture" id=8]
+[ext_resource path="res://assets/flower_004.png" type="Texture" id=9]
+[ext_resource path="res://assets/heart_001.png" type="Texture" id=10]
+[ext_resource path="res://assets/flower_005.png" type="Texture" id=11]
+[ext_resource path="res://assets/flower_003.png" type="Texture" id=12]
+[ext_resource path="res://assets/heart_002.png" type="Texture" id=13]
+[ext_resource path="res://assets/heart_003.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 10 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,6 +76,48 @@ margin_top = -102.0
 margin_right = 118.0
 margin_bottom = 186.0
 color = Color( 0, 0, 0, 0.113725 )
+
+[node name="Doodles" type="AnimatedSprite" parent="Background"]
+position = Vector2( -144, 205 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 45, -1 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="AnimatedSprite5" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 238, 0 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 91, -1 )
+frames = SubResource( 3 )
+playing = true
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 139, -1 )
+frames = SubResource( 4 )
+frame = 1
+playing = true
+flip_h = true
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 189, -2 )
+frames = SubResource( 5 )
+playing = true
+
+[node name="Heart" type="AnimatedSprite" parent="Background/Doodles"]
+position = Vector2( 294, -13 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 6 )
+playing = true
 
 [node name="IncomingBlockColor" type="ColorRect" parent="."]
 margin_left = 153.0
@@ -66,10 +165,14 @@ texture = ExtResource( 2 )
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Column4" type="TextureButton" parent="."]
+visible = false
 margin_left = 153.0
 margin_top = 219.0
 margin_right = 189.0
 margin_bottom = 507.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Column5" type="TextureButton" parent="."]
 margin_left = 189.0
@@ -178,12 +281,15 @@ margin_bottom = 398.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="HP" type="Label" parent="HUD"]
-margin_left = 315.0
-margin_top = 433.0
-margin_right = 355.0
-margin_bottom = 447.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 312.0
+margin_top = 511.0
+margin_right = 352.0
+margin_bottom = 525.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "HP: 5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FloatTextSpawner" parent="HUD/HP" instance=ExtResource( 4 )]
 
