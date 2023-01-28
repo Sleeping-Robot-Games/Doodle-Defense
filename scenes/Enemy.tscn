@@ -105,5 +105,9 @@ one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="Unfreeze" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="SquishTimer" to="." method="_on_SquishTimer_timeout"]
+[connection signal="timeout" from="Unfreeze" to="." method="_on_Unfreeze_timeout"]

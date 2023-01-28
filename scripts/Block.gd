@@ -5,6 +5,7 @@ var queued_drop = 0
 
 func set_color(color):
 	$Sprite.modulate = color
+	$Shatter.modulate = color
 
 func drop(rows):
 	var start = global_position.y
@@ -28,5 +29,14 @@ func _on_AttackedTimer_timeout():
 	boom()
 
 func boom():
-	# TODO: play animation
-	queue_free()
+	play_shatter_animation()
+
+func play_shatter_animation():
+	$Sprite.visible = false
+	$Shatter.visible = true
+	$Shatter/AnimationPlayer.play("shatter")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == 'shatter':
+		queue_free()

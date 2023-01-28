@@ -3,10 +3,13 @@ extends Node2D
 var queued_boom = false
 var flyer = false
 var type = ""
+var frozen = true
 
 func _ready():
 	type = 'air' if flyer else 'ground'
 	play_move_animation()
+	$Unfreeze.wait_time = get_parent().get_parent().SPAWN_TIME / 2
+	$Unfreeze.start()
 
 func slide_right(columns = 1):
 	var start = global_position.x
@@ -36,3 +39,7 @@ func boom():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if 'Hit' in anim_name:
 		play_move_animation()
+
+
+func _on_Unfreeze_timeout():
+	frozen = false

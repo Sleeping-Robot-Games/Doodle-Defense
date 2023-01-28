@@ -48,14 +48,15 @@ func _ready():
 func next_color():
 	random.randomize()
 	spawn_color = random.randi_range(0, colors.size() - 1)
-	$IncomingBlockColor.color = colors[spawn_color]
+	$IncomingBlock.set_color(colors[spawn_color])
 	$BlockProgress/Tween1.interpolate_property($BlockProgress, 'value', 0, 50, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$BlockProgress/Tween1.start()
+	# enemy_phase()
 
 func _on_BlockProgressTween1_tween_all_completed():
-	enemy_phase()
 	$BlockProgress/Tween2.interpolate_property($BlockProgress, 'value', 50, 100, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$BlockProgress/Tween2.start()
+	enemy_phase()
 
 func _on_BlockProgressTween2_tween_all_completed():
 	spawn_enemy()
@@ -101,6 +102,7 @@ func combo_check():
 	var row_combo_cells = []
 	var col_combo_cells = []
 	var diag_combo_cells = []
+	
 	# horizontal combo pass
 	for x in range(0, grid.size()):
 		var prev_color = 0
@@ -138,8 +140,7 @@ func combo_check():
 			else:
 				buffer = []
 				prev_color = cur_color
-	# TODO: diagonal
-	
+				
 	# combine combo cells into one array
 	for cell in row_combo_cells:
 		if not combo_cells.has(cell):
@@ -193,6 +194,7 @@ func destroy_nearest_enemy():
 	for x in range(7, 3, -1):
 		for y in range(7, -1, -1):
 			if grid[x][y] == -1:
+				print('destroying nearest enemy')
 				node_refs[x][y].boom()
 				node_refs[x][y] = null
 				grid[x][y] = 0
@@ -237,9 +239,11 @@ func move_enemies():
 			if grid[x][y] == 0 and grid[x][y-1] == -1 \
 				and not enemies_that_attacked.has(Vector2(x,y-1)) \
 				and not enemies_that_moved.has(Vector2(x,y-1)):
+					node_refs[x][y] = node_refs[x][y-1]
+#					if node_refs[x][y].frozen:
+#						break
 					grid[x][y] = -1
 					grid[x][y-1] = 0
-					node_refs[x][y] = node_refs[x][y-1]
 					node_refs[x][y].slide_right()
 					node_refs[x][y-1] = null
 					enemies_that_moved.append(Vector2(x,y))
@@ -256,7 +260,6 @@ func spawn_enemy():
 	if grid[i][0] == 0:
 		grid[i][0] = -1
 		var enemy = enemy_scene.instance()
-		print(i == 5 or i == 6)
 		enemy.flyer = i == 5 or i == 6
 		node_refs[i][0] = enemy
 		enemy.global_position = get_node('EnemySpawn'+str(i)).global_position

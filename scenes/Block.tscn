@@ -24,7 +24,7 @@ tracks/0/keys = {
 resource_name = "shatter"
 length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
+tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -47,19 +47,18 @@ animations = [ {
 [node name="Block" type="Node2D" groups=["blocks"]]
 script = ExtResource( 2 )
 
-[node name="Sprite2" type="Sprite" parent="."]
+[node name="Shatter" type="Sprite" parent="."]
 visible = false
 texture = ExtResource( 4 )
 hframes = 4
 vframes = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Shatter"]
 anims/RESET = SubResource( 2 )
 anims/shatter = SubResource( 3 )
 
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
 playing = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -68,4 +67,5 @@ playing = true
 wait_time = 0.2
 one_shot = true
 
+[connection signal="animation_finished" from="Shatter/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="AttackedTimer" to="." method="_on_AttackedTimer_timeout"]
