@@ -207,8 +207,7 @@ func enemy_phase():
 			# enemy to left of block
 			if grid[x][y] == -1 and y < 7 and grid[x][y + 1] > 0:
 				enemy_attacked = true
-				# TODO: play attack animation
-				# node_refs[x][y].attack()
+				node_refs[x][y].play_attack_animation()
 				grid[x][y+1] = 0
 				node_refs[x][y+1].delayed_boom(attack_time)
 				node_refs[x][y+1] = null
@@ -216,7 +215,7 @@ func enemy_phase():
 			# enemy to left of castle
 			elif grid[x][y] == -1 and y == 7:
 				enemy_attacked = true
-				# TODO: play attack animation
+				node_refs[x][y].play_attack_animation()
 				$HUD/HP/FloatTextSpawner.float_text('-1', red)
 				hp = max(0, hp - 1)
 				$HUD/HP.text = 'HP: ' + str(hp)
@@ -257,6 +256,8 @@ func spawn_enemy():
 	if grid[i][0] == 0:
 		grid[i][0] = -1
 		var enemy = enemy_scene.instance()
+		print(i == 5 or i == 6)
+		enemy.flyer = i == 5 or i == 6
 		node_refs[i][0] = enemy
 		enemy.global_position = get_node('EnemySpawn'+str(i)).global_position
 		$Enemies.add_child(enemy)

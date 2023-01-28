@@ -1,6 +1,12 @@
 extends Node2D
 
 var queued_boom = false
+var flyer = false
+var type = ""
+
+func _ready():
+	type = 'air' if flyer else 'ground'
+	play_move_animation()
 
 func slide_right(columns = 1):
 	var start = global_position.x
@@ -10,8 +16,15 @@ func slide_right(columns = 1):
 	$Tween.start()
 
 func delayed_boom(delay = 0.05):
+	## TODO: Check if air or ground
 	$SquishTimer.wait_time = delay
 	$SquishTimer.start()
+
+func play_move_animation():
+	$Sprite/AnimationPlayer.play(type + "Move")
+	
+func play_attack_animation():
+	$Sprite/AnimationPlayer.play(type + "Hit")
 
 func _on_SquishTimer_timeout():
 	boom()
@@ -20,4 +33,6 @@ func boom():
 	# TODO: play animation
 	queue_free()
 
-
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if 'Hit' in anim_name:
+		play_move_animation()
