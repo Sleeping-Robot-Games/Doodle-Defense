@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy_001.png" type="Texture" id=2]
@@ -16,6 +16,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "airDeath"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 7, 23 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -49,6 +66,23 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 5, 21, 6, 22 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "groundDeath"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 18 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -95,8 +129,10 @@ vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
 anims/RESET = SubResource( 1 )
+anims/airDeath = SubResource( 6 )
 anims/airHit = SubResource( 2 )
 anims/airMove = SubResource( 3 )
+anims/groundDeath = SubResource( 7 )
 anims/groundHit = SubResource( 4 )
 anims/groundMove = SubResource( 5 )
 
