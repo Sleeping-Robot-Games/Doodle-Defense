@@ -3,7 +3,7 @@ extends Node2D
 onready var block_scene = preload('res://scenes/Block.tscn')
 onready var enemy_scene = preload('res://scenes/Enemy.tscn')
 
-const SPAWN_TIME = 5.0
+const SPAWN_TIME = 3.0
 
 var random = RandomNumberGenerator.new()
 
@@ -13,7 +13,7 @@ var green = Color(0.04, 0.52, 0.11, 1.0)
 var red = Color(0.52, 0.04, 0.04, 1.0)
 var yellow = Color(0.88, 0.77, 0.23, 1.0)
 var purple = Color(0.32, 0.05, 0.54, 1.0)
-var colors = [green, red, yellow, purple]
+var colors = [green, red, purple]
 
 var spawn_color = 0
 var spawn_column = 4
