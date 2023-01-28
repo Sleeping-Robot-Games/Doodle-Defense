@@ -29,16 +29,20 @@ func play_move_animation():
 func play_attack_animation():
 	$Sprite/AnimationPlayer.play(type + "Hit")
 
+func play_death_animation():
+	$Sprite/AnimationPlayer.play(type + 'Death')
+
 func _on_SquishTimer_timeout():
 	boom()
 
 func boom():
-	# TODO: play animation
-	queue_free()
+	play_death_animation()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if 'Hit' in anim_name:
 		play_move_animation()
+	if 'Death' in anim_name:
+		queue_free()
 
 
 func _on_Unfreeze_timeout():

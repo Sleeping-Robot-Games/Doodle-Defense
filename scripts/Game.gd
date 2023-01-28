@@ -52,7 +52,7 @@ func next_color():
 	$Selector.modulate = colors[spawn_color]
 	$BlockProgress/Tween1.interpolate_property($BlockProgress, 'value', 0, 50, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$BlockProgress/Tween1.start()
-	# enemy_phase()
+	# enemy_phase() # Doesn't work because rats move at the same time as drops and "dodge but doesn't look like it
 
 func _on_BlockProgressTween1_tween_all_completed():
 	$BlockProgress/Tween2.interpolate_property($BlockProgress, 'value', 50, 100, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
@@ -241,6 +241,7 @@ func move_enemies():
 				and not enemies_that_attacked.has(Vector2(x,y-1)) \
 				and not enemies_that_moved.has(Vector2(x,y-1)):
 					node_refs[x][y] = node_refs[x][y-1]
+					# See comment on line 55 
 #					if node_refs[x][y].frozen:
 #						break
 					grid[x][y] = -1

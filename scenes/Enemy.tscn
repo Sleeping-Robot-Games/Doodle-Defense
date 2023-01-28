@@ -21,7 +21,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=6]
 resource_name = "airDeath"
 length = 0.2
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -71,7 +70,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=7]
 resource_name = "groundDeath"
 length = 0.2
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
