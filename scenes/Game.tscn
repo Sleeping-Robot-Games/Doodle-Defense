@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/selector.png" type="Texture" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/sun_002.png" type="Texture" id=22]
 [ext_resource path="res://assets/sun_001.png" type="Texture" id=23]
 [ext_resource path="res://scenes/Block.tscn" type="PackedScene" id=24]
+[ext_resource path="res://assets/font/fontstyle.tres" type="DynamicFont" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -134,36 +135,36 @@ __meta__ = {
 [node name="Doodles" type="AnimatedSprite" parent="Background"]
 position = Vector2( -144, 205 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Flower2" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 45, -1 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="Flower6" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 238, 0 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Flower3" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 91, -1 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Flower4" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 139, -1 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 flip_h = true
 
 [node name="Flower5" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 189, -2 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Heart" type="AnimatedSprite" parent="Background/Doodles"]
@@ -176,23 +177,23 @@ playing = true
 [node name="Clouds" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 144, -347 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="Sun" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 25, -383 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="Cat" type="AnimatedSprite" parent="Background"]
 position = Vector2( 146, -30 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 
 [node name="Tower" type="AnimatedSprite" parent="Background"]
 position = Vector2( 148, 93 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="IncomingBlock" parent="." instance=ExtResource( 24 )]
@@ -236,7 +237,6 @@ modulate = Color( 0, 0.235294, 0.737255, 1 )
 position = Vector2( 171, 237 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="Blocks" type="Node2D" parent="."]
@@ -359,11 +359,12 @@ margin_bottom = 398.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="HP" type="RichTextLabel" parent="HUD"]
-margin_left = 312.0
-margin_top = 511.0
+margin_left = 306.0
+margin_top = 510.0
 margin_right = 357.0
-margin_bottom = 525.0
+margin_bottom = 524.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 25 )
 bbcode_enabled = true
 bbcode_text = "[shake rate=10 level=2]HP: 5[/shake]"
 text = "HP: 5"
