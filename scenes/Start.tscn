@@ -178,7 +178,7 @@ playing = true
 position = Vector2( 294, -13 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Clouds" type="AnimatedSprite" parent="Background/Doodles"]
@@ -249,12 +249,9 @@ margin_bottom = 460.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 27 )
 bbcode_enabled = true
-bbcode_text = "[shake rate=10 level=2]Get 3 Blocks of the same color in a row or column for a [color=#160ff5]Combo. Combos[/color] kill 3 rats[/shake]"
-text = "Get 3 Blocks of the same color in a row or column for a Combo. Combos kill 3 rats"
+bbcode_text = "[shake rate=10 level=2]Get 3 Blocks of the same color in a row or column for a [color=#160ff5]Combo. Combos[/color] kill 3 rats and give [color=#e6cc00]score[/color][/shake]"
+text = "Get 3 Blocks of the same color in a row or column for a Combo. Combos kill 3 rats and give score"
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Survive" type="RichTextLabel" parent="."]
 margin_left = 21.0
@@ -264,12 +261,9 @@ margin_bottom = 501.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = ExtResource( 27 )
 bbcode_enabled = true
-bbcode_text = "[shake rate=10 level=2]More Rats come as times goes on. How long can you defend?[/shake]"
-text = "More Rats come as times goes on. How long can you defend?"
+bbcode_text = "[shake rate=10 level=2] How long can you defend the cat king?[/shake]"
+text = " How long can you defend the cat king?"
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5

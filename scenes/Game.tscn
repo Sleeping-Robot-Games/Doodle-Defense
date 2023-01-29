@@ -166,65 +166,64 @@ __meta__ = {
 [node name="Doodles" type="AnimatedSprite" parent="Background"]
 position = Vector2( -144, 205 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 
 [node name="Flower2" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 45, -1 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="Flower6" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 238, 0 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Flower3" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 91, -1 )
 frames = SubResource( 3 )
-frame = 1
 playing = true
 
 [node name="Flower4" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 139, -1 )
 frames = SubResource( 4 )
-frame = 1
 playing = true
 flip_h = true
 
 [node name="Flower5" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 189, -2 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Heart" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 294, -13 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-frame = 2
 playing = true
 
 [node name="Clouds" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 144, -347 )
 frames = SubResource( 9 )
+frame = 1
 playing = true
 
 [node name="Sun" type="AnimatedSprite" parent="Background/Doodles"]
 position = Vector2( 25, -383 )
 frames = SubResource( 11 )
-frame = 1
 playing = true
 
 [node name="Cat" type="AnimatedSprite" parent="Background"]
 position = Vector2( 146, -30 )
 frames = SubResource( 7 )
-frame = 1
 playing = true
 
 [node name="Tower" type="AnimatedSprite" parent="Background"]
 position = Vector2( 148, 93 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="IncomingBlock" parent="." instance=ExtResource( 24 )]
@@ -265,7 +264,6 @@ modulate = Color( 0, 0.235294, 0.737255, 1 )
 position = Vector2( 171, 237 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 10 )
-frame = 1
 playing = true
 
 [node name="Blocks" type="Node2D" parent="."]
@@ -410,10 +408,10 @@ one_shot = true
 
 [node name="GameOver" type="TextureButton" parent="."]
 visible = false
-margin_left = 101.0
-margin_top = 326.0
-margin_right = 242.0
-margin_bottom = 387.0
+margin_left = 107.0
+margin_top = 292.0
+margin_right = 248.0
+margin_bottom = 353.0
 texture_normal = SubResource( 13 )
 texture_pressed = SubResource( 14 )
 texture_hover = SubResource( 15 )
