@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/smash_fx.mp3-f0eafe8761e3816fc61b05ca5aa8b824.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/smash_fx.mp3"
+dest_files=[ "res://.import/smash_fx.mp3-f0eafe8761e3816fc61b05ca5aa8b824.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

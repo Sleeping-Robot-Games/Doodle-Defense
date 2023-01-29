@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mouse_death2.mp3-417bcf4ced02ba484d82f6fd4774f5ff.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/mouse_death2.mp3"
+dest_files=[ "res://.import/mouse_death2.mp3-417bcf4ced02ba484d82f6fd4774f5ff.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -13,7 +13,9 @@ var green = Color(0.04, 0.52, 0.11, 1.0)
 var red = Color(0.52, 0.04, 0.04, 1.0)
 var yellow = Color(0.88, 0.77, 0.23, 1.0)
 var purple = Color(0.32, 0.05, 0.54, 1.0)
-var colors = [green, red, purple]
+var colors = [green, red, purple, yellow]
+var score = 0
+var game_over = false
 
 var spawn_color = 0
 var spawn_column = 4
@@ -44,20 +46,29 @@ var enemies_that_moved = []
 
 func _ready():
 	next_color()
+	add_score(0)
+
+func add_score(num):
+	score += num
+	$Score.bbcode_text = "[shake rate=10 level=2] Score: {score}[/shake]".format({'score': score})
 
 func next_color():
+	if game_over:
+		return
+	print('how')
 	random.randomize()
 	spawn_color = random.randi_range(0, colors.size() - 1)
 	$IncomingBlock.set_color(colors[spawn_color])
 	$Selector.modulate = colors[spawn_color]
 	$BlockProgress/Tween1.interpolate_property($BlockProgress, 'value', 0, 50, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$BlockProgress/Tween1.start()
-	# enemy_phase() # Doesn't work because rats move at the same time as drops and "dodge but doesn't look like it
+	# $EnemyAttackTimer.start()
 
 func _on_BlockProgressTween1_tween_all_completed():
 	$BlockProgress/Tween2.interpolate_property($BlockProgress, 'value', 50, 100, SPAWN_TIME / 2, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 	$BlockProgress/Tween2.start()
 	enemy_phase()
+	
 
 func _on_BlockProgressTween2_tween_all_completed():
 	spawn_enemy()
@@ -171,6 +182,7 @@ func slide_down_blocks():
 			if grid[x][y] > 0 and x+1 <= grid.size()-1 and grid[x+1][y] <= 0:
 				# if we're landing on an enemy, squish em
 				if grid[x+1][y] == -1:
+					g.play_sfx('mouse_death')
 					node_refs[x+1][y].delayed_boom()
 				# slide block down by 1, then recursively re-run function
 				grid[x+1][y] = grid[x][y]
@@ -191,15 +203,20 @@ func slide_down_blocks():
 		$ComboRecheckTimer.start()
 
 func destroy_nearest_enemy():
+	g.play_sfx('smash_fx')
 	# reverse loop through rows and columns
 	for x in range(7, 3, -1):
 		for y in range(7, -1, -1):
 			if grid[x][y] == -1:
-				print('destroying nearest enemy')
+				g.play_sfx('mouse_death')
+				add_score(10)
 				node_refs[x][y].boom()
 				node_refs[x][y] = null
 				grid[x][y] = 0
 				return
+
+func _on_EnemyPhaseTimer_timeout():
+	enemy_phase() # Doesn't work because rats move at the same time as drops and "dodge but doesn't look like it
 
 func enemy_phase():
 	# attack loop
@@ -211,6 +228,7 @@ func enemy_phase():
 			if grid[x][y] == -1 and y < 7 and grid[x][y + 1] > 0:
 				enemy_attacked = true
 				node_refs[x][y].play_attack_animation()
+				g.play_sfx('smash_fx')
 				grid[x][y+1] = 0
 				node_refs[x][y+1].delayed_boom(attack_time)
 				node_refs[x][y+1] = null
@@ -223,14 +241,24 @@ func enemy_phase():
 				hp = max(0, hp - 1)
 				$HUD/HP.text = 'HP: ' + str(hp)
 				if hp == 0:
-					# TODO: gameover
-					print('GAME OVER')
-	
+					print('game over time!')
+					game_over_time()
+	if game_over:
+		return
+		
 	if enemy_attacked:
 		$EnemyAttackTimer.wait_time = attack_time
 		$EnemyAttackTimer.start()
 	else:
 		move_enemies()
+
+func game_over_time():
+	game_over = true
+	$GameOver.show()
+	g.stop_bgm()
+	g.play_bgm(true)
+	$Selector.hide()
+	$GameOver.show()
 
 func move_enemies():
 	for x in range(4, grid.size()):
@@ -241,7 +269,7 @@ func move_enemies():
 				and not enemies_that_attacked.has(Vector2(x,y-1)) \
 				and not enemies_that_moved.has(Vector2(x,y-1)):
 					node_refs[x][y] = node_refs[x][y-1]
-					# See comment on line 55 
+					# See comment on line 205 
 #					if node_refs[x][y].frozen:
 #						break
 					grid[x][y] = -1
@@ -249,6 +277,17 @@ func move_enemies():
 					node_refs[x][y].slide_right()
 					node_refs[x][y-1] = null
 					enemies_that_moved.append(Vector2(x,y))
+					# If enemy gets to castle then attack right away
+					if grid[x][y] == -1 and y == 7:
+						print('attacking castle')
+						node_refs[x][y].play_attack_animation()
+						$HUD/HP/FloatTextSpawner.float_text('-1', red)
+						hp = max(0, hp - 1)
+						$HUD/HP.text = 'HP: ' + str(hp)
+						if hp == 0:
+							print('game over time!')
+							game_over_time()
+					
 	enemies_that_attacked = []
 	enemies_that_moved = []
 
@@ -285,3 +324,8 @@ func _on_BlockLandTimer_timeout():
 
 func _on_ComboRecheckTimer_timeout():
 	combo_check()
+
+
+func _on_GameOver_button_up():
+	g.stop_bgm()
+	get_tree().change_scene("res://scenes/Start.tscn")
